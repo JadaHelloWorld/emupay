@@ -39,7 +39,7 @@
     "prepare:bitpay": "run-s clean apply:bitpay && ionic cordova prepare && run-s fix:fcm",
     "clean-all": "git clean -dfx",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
+    "ionic:build": "node --max-old-space-size=8192 --stack-size=1968 node_modules/@ionic/app-scripts/bin/ionic-app-scripts.js build",
     "ionic:serve": "ionic-app-scripts serve",
     "watch": "ng test --browsers=Chrome",
     "test": "run-s env:dev test:lint test:ci env:e2e e2e env:dev",
