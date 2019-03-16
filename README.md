@@ -320,13 +320,14 @@ Copay is released under the MIT License. Please refer to the [LICENSE](https://g
 
 - docker image will automatically build to the following dockerhub, when each time the github updated
     - https://cloud.docker.com/repository/docker/jadajin/emupay/general
-- if you can build docker image locally by run:
+- if you want to build docker image locally, run
     - ./build_docker_image.sh
-- if you want to push the docker image after build:
-    - ./build_docker_image.sh
+- if you want to push the docker image after build, run
+    - ./build_docker_image.sh　push
 
-## deploy to Mac / Ubuntu server
-- cd docker_compose
+## deploy on Mac / Ubuntu server
+- git clone https://github.com/JadaHelloWorld/emupay.git
+- cd emupay/docker_compose
 - ./setup.sh
 
 then emupay will run on the http://0.0.0.0:8100
