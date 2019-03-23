@@ -331,3 +331,14 @@ Copay is released under the MIT License. Please refer to the [LICENSE](https://g
 - ./setup.sh
 
 then emupay will run on the http://0.0.0.0:8100
+
+
+## docker environment for ionic building android apk
+- create docker image:
+    - cd emupay/android_docker
+    - ./build_docker_image.sh
+- run docker:
+    - cd emupay/docker_compose
+    - docker_compose up emupay_andriod
+- docker image in https://hub.docker.com/r/jadajin/emupay_android
+    - docker pull jadajin/emupay_android

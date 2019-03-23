@@ -3,4 +3,4 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 docker pull jadajin/emupay:latest
-docker-compose up -d
+docker-compose up emupay -d
