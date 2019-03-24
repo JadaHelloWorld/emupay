@@ -56,12 +56,18 @@ CMD npm run ionic:serve
 
 ARG sdk_version=sdk-tools-linux-3859397.zip
 ARG android_home=/opt/android/sdk
+ARG gradle_home=/opt/gradle/gradle-5.1/bin
 
 # SHA-256 444e22ce8ca0f67353bda4b85175ed3731cae3ffa695ca18119cbacef1c1bea0
 
 RUN sudo apt-get update && \
     sudo apt-get install --yes xvfb gcc-multilib lib32z1 lib32stdc++6 build-essential libcurl4-openssl-dev
 
+ENV ANDROID_HOME ${android_home}
+ENV ADB_INSTALL_TIMEOUT 120
+ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
+ENV GRADLE_HOME ${gradle_home}
+ENV PATH=${PATH}:${ANDROID_HOME}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${GRADLE_HOME}
 
 
 # Download and install Android SDK
@@ -71,11 +77,7 @@ RUN sudo mkdir -p ${android_home} && \
     rm /tmp/${sdk_version}
 
 # Set environmental variables
-ENV ANDROID_HOME=${android_home}
-ENV ADB_INSTALL_TIMEOUT 120
-ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
-ENV GRADLE_HOME="/opt/gradle/gradle-5.1/bin"
-ENV PATH="$PATH:$ANDROID_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME"
+
 
 RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg
 
@@ -88,23 +90,23 @@ RUN sdkmanager \
   "emulator" \
   "extras;android;m2repository" \
   "extras;google;m2repository" \
-  "extras;google;google_play_services"
-
-RUN sdkmanager "build-tools;26.0.1"
-RUN sdkmanager "platforms;android-25"
-
+  "extras;google;google_play_services" \
+  "platform-tools" \
+  "platforms;android-25" \
+  "system-images;android-25;google_apis;x86_64" \
+  "system-images;android-25;google_apis_playstore;x86" \
+  "build-tools;26.0.1" \
+  "sources;android-25" \
+  "system-images;android-25;default;x86_64"
 
 #RUN android update sdk -u -a -t 1,2,4
 
+# setup PATH
 
-RUN export ANDROID_HOME=/opt/android/sdk
-RUN export PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
-RUN export GRADLE_HOME="/opt/gradle/gradle-5.1/bin"
-RUN export PATH="$PATH:$ANDROID_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME"
-RUN cat android_docker/bash_profile.sh >> ~/.bashrc
-RUN source ~/.bashrc
+
+
 # BUILD android APK
-RUN cordova platform add android --verbose
-COPY google-services.json platforms/android/app/
-RUN ionic cordova build android
+# RUN cordova platform add android --verbose
+# COPY google-services.json platforms/android/app/
+# RUN ionic cordova build android
 

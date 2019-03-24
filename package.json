@@ -297,7 +297,7 @@
       "cordova-plugin-uniquedeviceid": {},
       "cordova-plugin-file": {},
       "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "25.+"
       },
       "cordova-custom-config": {},
       "cordova-plugin-customurlscheme": {
