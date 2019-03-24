@@ -9,7 +9,7 @@ services:
     restart: always
 
   emupay_android:
-    image: 'jadajin/emupay_andriod:latest'
+    image: 'jadajin/emupay_android:latest'
     ports:
       - "8101:8101"
     restart: always

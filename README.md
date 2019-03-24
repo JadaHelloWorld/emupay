@@ -341,4 +341,5 @@ then emupay will run on the http://0.0.0.0:8100
     - cd emupay/docker_compose
     - docker_compose up emupay_andriod
 - docker image in https://hub.docker.com/r/jadajin/emupay_android
-    - docker pull jadajin/emupay_android
+    - docker pull jadajin/emupay_android:release
+- android apk file at android_docker/app-release-unsigned.apk

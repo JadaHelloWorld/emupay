@@ -90,23 +90,36 @@ RUN sdkmanager \
   "emulator" \
   "extras;android;m2repository" \
   "extras;google;m2repository" \
-  "extras;google;google_play_services" \
+  "extras;google;google_play_services"
+
+
+RUN sdkmanager \
   "platform-tools" \
   "platforms;android-25" \
   "system-images;android-25;google_apis;x86_64" \
   "system-images;android-25;google_apis_playstore;x86" \
-  "build-tools;26.0.1" \
+  "build-tools;28.0.3" \
   "sources;android-25" \
   "system-images;android-25;default;x86_64"
+
 
 #RUN android update sdk -u -a -t 1,2,4
 
 # setup PATH
 
+ENV ANDROID_HOME ${android_home}
+ENV ADB_INSTALL_TIMEOUT 120
+ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
+ENV GRADLE_HOME ${gradle_home}
+ENV PATH=${PATH}:${ANDROID_HOME}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${GRADLE_HOME}
 
 
 # BUILD android APK
 # RUN cordova platform add android --verbose
+## A. add "https://github.com/danielsogl/cordova-plugin-useragent.git" to package.json -> cordova.plugin -> "im.ltdev.cordova.UserAgent"
+# RUN cordova prepare android
+## remove A. from package.json file
+# RUN cordova prepare android # run this again
 # COPY google-services.json platforms/android/app/
-# RUN ionic cordova build android
+# RUN ionic cordova build android --release
 
