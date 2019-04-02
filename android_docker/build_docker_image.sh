@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 REPO="jadajin"
-IMAGE_NAME="emupay_android"
+IMAGE_NAME="android_env"
 IMAGE="${REPO}/${IMAGE_NAME}"
 TAG="${IMAGE}:latest"
 

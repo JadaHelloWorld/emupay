@@ -49,9 +49,6 @@ RUN npm install -g cordova
 RUN npm run apply:copay
 RUN npm run ionic:build --prod
 
-EXPOSE 8100
-WORKDIR /emupay
-CMD npm run ionic:serve
 
 
 ARG sdk_version=sdk-tools-linux-3859397.zip
@@ -122,4 +119,7 @@ ENV PATH=${PATH}:${ANDROID_HOME}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-
 # RUN cordova prepare android # run this again
 # COPY google-services.json platforms/android/app/
 # RUN ionic cordova build android --release
+
+WORKDIR /emupay
+
 

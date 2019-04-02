@@ -9,7 +9,8 @@ services:
     restart: always
 
   emupay_android:
-    image: 'jadajin/emupay_android:latest'
+    command: 'while true; do sleep 1000 ; echo "background"; done &'
+    image: 'jadajin/emupay_android:release'
     ports:
       - "8101:8101"
     restart: always
