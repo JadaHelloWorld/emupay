@@ -7,7 +7,7 @@ MAINTAINER Jada Jin
 # Install.
 RUN apt-get -y update && \
 apt-get -y upgrade && \
-apt-get install -y  iputils-ping npm openjdk-8-jre openjdk-8-jdk unzip nano vim screen wget autossh git curl sudo npm
+apt-get install -y  iputils-ping openjdk-8-jre openjdk-8-jdk unzip nano vim screen wget autossh git curl sudo npm
 
 #Nodejs
 RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash - \
