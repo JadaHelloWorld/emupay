@@ -314,7 +314,7 @@
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-spinner-dialog": {},
       "cordova-plugin-vibration": {},
-      "im.ltdev.cordova.UserAgent": {},
+      "im.ltdev.cordova.UserAgent": "https://github.com/danielsogl/cordova-plugin-useragent.git",
       "cordova-launch-review": {}
     },
     "platforms": [
