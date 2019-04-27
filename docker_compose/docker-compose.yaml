@@ -9,8 +9,11 @@ services:
     restart: always
 
   emupay_android:
-    command: 'while true; do sleep 1000 ; echo "background"; done &'
+    command: ionic serve --port 2333 &
     image: 'jadajin/emupay_android:release'
+    privileged: true
     ports:
+      - "2333:2333"
+      - "8100:8100"
       - "8101:8101"
     restart: always
